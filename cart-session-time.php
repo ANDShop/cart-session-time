@@ -64,21 +64,19 @@ function woocommerce_clear_cart()
   if (class_exists('WooCommerce')) {
     global $woocommerce;
     // Get current time
-    $current_time = (new DateTime(wp_date('Y-m-d H:i:s', wp_date('U')), new DateTimeZone('Asia/Tokyo')))->format('U');
-    $time_name_all = 'time_name_all';
+    $current_time = (new DateTime(current_time('Y-m-d H:i:s'), new DateTimeZone('Asia/Tokyo')))->format('U');
+    $time_name_all = sanitize_text_field('time_name_all');
     // Get previously saved value if available
     $time_val_all = get_option($time_name_all);
     // User setting time
-    $expiry_in_seconds = $time_val_all;
+    $expiry_in_seconds = intval($time_val_all);
     // Check if active time is set in a cookie
     if (!isset($_COOKIE['active_time'])) {
       // Set the current time
-      setcookie('active_time', (new DateTime(wp_date('Y-m-d H:i:s', wp_date('U')), new
-        DateTimeZone('Asia/Tokyo')))->format('U'), time() + (10 * 365 * 24 * 60 * 60), "/");
-      // echo "No time set";
+      setcookie('active_time', (new DateTime(current_time('Y-m-d H:i:s'), new DateTimeZone('Asia/Tokyo')))->format('U'), time() + (10 * 365 * 24 * 60 * 60), '/');
     } else {
       // Add the set time
-      $cart_expiry_time = $_COOKIE['active_time'] + $expiry_in_seconds;
+      $cart_expiry_time = intval($_COOKIE['active_time']) + $expiry_in_seconds;
       // Calculate the remaining time
       $diff = $cart_expiry_time - $current_time;
 
@@ -90,6 +88,7 @@ function woocommerce_clear_cart()
   }
 }
 add_action('wp_footer', 'woocommerce_clear_cart');
+
 
 // Clear cookie
 function my_custom_function()
