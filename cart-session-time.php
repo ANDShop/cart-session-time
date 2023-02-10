@@ -57,7 +57,6 @@ function cst_setting_page()
   require_once plugin_dir_path(__FILE__) . 'inc/setting-page.php';
 }
 
-//
 // Clear cart
 function woocommerce_clear_cart()
 {
@@ -88,7 +87,6 @@ function woocommerce_clear_cart()
   }
 }
 add_action('wp_footer', 'woocommerce_clear_cart');
-
 
 // Clear cookie
 function my_custom_function()
