@@ -16,7 +16,7 @@ Cart Session Time is a plugin that allows you to change the retention time of yo
 
 1. cart session time can be installed directly from the WordPress plugin dashboard.
 You can install it directly from the plugin dashboard.
-2. click "Add New" and search for "Cart Session Time
+2. click "Add New" and search for "Cart Session Time"
 3. install and activate
 
 == Frequently asked questions ==
