@@ -44,7 +44,6 @@ function cst_plugin_row_meta($links, $file)
     // プラグインの説明欄に追加するリンクを作成
     $links[] = '<a href="https://wp.and-bro.com/shop/plugin/cart-session-time">' . esc_html__('Paid Version', 'cart-session-time') . '</a>';
   }
-
   return $links;
 }
 
